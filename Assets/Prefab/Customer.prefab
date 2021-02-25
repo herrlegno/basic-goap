@@ -2513,6 +2513,12 @@ GameObject:
   - component: {fileID: 8571599194872494506}
   - component: {fileID: -3939053054601753494}
   - component: {fileID: -2891989569530987227}
+  - component: {fileID: 8147646564603574148}
+  - component: {fileID: 181571816274776368}
+  - component: {fileID: 1923250617516022957}
+  - component: {fileID: 3124261780642660439}
+  - component: {fileID: 2116873160366390360}
+  - component: {fileID: 2238930344724476556}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -2569,7 +2575,140 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8e7876c52b70d4fa4cdd5fc70f9d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisAgent: {fileID: 0}
+  thisAgent: {fileID: 2116873160366390360}
+--- !u!114 &8147646564603574148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560050545005163582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa29119e38b38345b631d70650ad366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Waiting For Table
+  cost: 1
+  target: {fileID: 0}
+  targetTag: Entrance
+  duration: 0
+  preConditions:
+  - key: WaitForTable
+    value: 0
+  afterEffects:
+  - key: WaitOrder
+    value: 0
+  agent: {fileID: -3939053054601753494}
+  running: 0
+--- !u!114 &181571816274776368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560050545005163582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d308d81c0141fad48ba80c3cefa77d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Waiting Order
+  cost: 1
+  target: {fileID: 0}
+  targetTag: 
+  duration: 0
+  preConditions:
+  - key: WaitOrder
+    value: 0
+  afterEffects: []
+  agent: {fileID: -3939053054601753494}
+  running: 0
+--- !u!114 &1923250617516022957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560050545005163582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa56a43c809bcb4783944a3adb15532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Eat
+  cost: 1
+  target: {fileID: 0}
+  targetTag: 
+  duration: 0
+  preConditions: []
+  afterEffects:
+  - key: Eat
+    value: 0
+  - key: Leave
+    value: 0
+  agent: {fileID: -3939053054601753494}
+  running: 0
+--- !u!114 &3124261780642660439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560050545005163582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd35838c4e4b78f438beb7d4c524d79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Leave
+  cost: 1
+  target: {fileID: 0}
+  targetTag: Home
+  duration: 0
+  preConditions:
+  - key: Leave
+    value: 0
+  afterEffects: []
+  agent: {fileID: -3939053054601753494}
+  running: 0
+--- !u!114 &2116873160366390360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560050545005163582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2035008c0d1b28344ae8d1965fd2847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+  currentAction: {fileID: 0}
+--- !u!114 &2238930344724476556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560050545005163582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5ca8a77e5e12f4faca092fb35e44aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 1
+  target: {fileID: 0}
+  targetTag: Entrance
+  duration: 0
+  preConditions: []
+  afterEffects:
+  - key: WaitForTable
+    value: 0
+  agent: {fileID: -3939053054601753494}
+  running: 0
 --- !u!1 &8672336025572496550
 GameObject:
   m_ObjectHideFlags: 0

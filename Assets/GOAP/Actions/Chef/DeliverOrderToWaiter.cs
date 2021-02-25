@@ -9,8 +9,9 @@ public class DeliverOrderToWaiter : GAction
     }
 
     public override bool PostPerform() {
-        var world = GWorld.Instance.GetWorld();
-        world.ModifyState("CookedOrders", 1);
+        var o = inventory.items.Find(item => item.CompareTag("Order"));
+        GWorld.Instance.AddCookedOrder(o);
+        inventory.RemoveItem(o);
         return true;
     }
 }

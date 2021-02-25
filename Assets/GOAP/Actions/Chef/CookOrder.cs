@@ -5,10 +5,9 @@ using UnityEngine;
 public class CookOrder: GAction
 {
     public override bool PrePerform() {
-        var world = GWorld.Instance.GetWorld();
-        var pendingOrders = world.HasState("PendingOrders");
-        if (!pendingOrders) return false;
-        GWorld.Instance.GetWorld().ModifyState("PendingOrders", -1);
+        var t = GWorld.Instance.CookOrder();
+        if (!t) return false;
+        inventory.AddItem(t);
         return true;
     }
 

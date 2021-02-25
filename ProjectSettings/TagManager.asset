@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Home
+  - Table
+  - Order
+  - Entrance
   layers:
   - Default
   - TransparentFX

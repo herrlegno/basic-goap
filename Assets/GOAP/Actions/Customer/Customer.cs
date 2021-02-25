@@ -7,8 +7,9 @@ public class Customer : GAgent
     // Start is called before the first frame update
     new void Start() {
         base.Start();
-        SubGoal hungry = new SubGoal("EatSomething", 1, false);
-        goals.Add(hungry, 3);
-        beliefs.ModifyState("Hungry", 1);
+        SubGoal waitOrder = new SubGoal("WaitOrder", 1, true);
+        SubGoal eat = new SubGoal("Eat", 1, true);
+        goals.Add(waitOrder, 3);
+        goals.Add(eat, 3);
     }
 }

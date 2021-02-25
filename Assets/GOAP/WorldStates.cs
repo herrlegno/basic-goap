@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Diagnostics;
+using UnityEditor.PackageManager;
+using Debug = UnityEngine.Debug;
 
 [System.Serializable]
 public class WorldState
@@ -18,40 +21,46 @@ public class WorldStates
         states = new Dictionary<string, int>();
     }
 
+    public int GetState(string key) {
+        if (!HasState(key)) throw new Exception(key + "Not found");
+        return states[key];
+    }
+
     public bool HasState(string key)
     {
         return states.ContainsKey(key);
     }
 
-    void AddState(string key, int value)
+    void CreateState(string key, int value)
     {
         states.Add(key, value);
     }
 
     public void ModifyState(string key, int value)
     {
-        if (states.ContainsKey(key))
+        if (HasState(key))
         {
             states[key] += value;
             if (states[key] <= 0)
                 RemoveState(key);
         }
         else
-            states.Add(key, value);
+            CreateState(key, value);
+        
     }
 
     public void RemoveState(string key)
     {
-        if (states.ContainsKey(key))
+        if (HasState(key))
             states.Remove(key);
     }
 
     public void SetState(string key, int value)
     {
-        if (states.ContainsKey(key))
+        if (HasState(key))
             states[key] = value;
         else
-            states.Add(key, value);
+            CreateState(key, value);
     }
 
     public Dictionary<string, int> GetStates()
