@@ -13,6 +13,8 @@ public class DeliverOrder : GAction
     public override bool PostPerform() {
         GameObject o = inventory.items.Find(item => item.CompareTag("Order"));
         o.GetComponent<Table>().customer.inventory.AddItem(o);
+        o.GetComponent<Table>().customer.beliefs.ModifyState("GotOrder", 1);
+        inventory.RemoveItem(o);
         return true;
     }
 }

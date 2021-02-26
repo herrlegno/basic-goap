@@ -22,7 +22,7 @@ public class WorldStates
     }
 
     public int GetState(string key) {
-        if (!HasState(key)) throw new Exception(key + "Not found");
+        // if (!HasState(key)) throw new Exception(key + "Not found");
         return states[key];
     }
 

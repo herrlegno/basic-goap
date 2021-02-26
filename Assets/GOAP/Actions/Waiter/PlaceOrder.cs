@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlaceOrder : GAction
 {
     public override bool PrePerform() {
-        var t = inventory.items.Find(item => item.CompareTag("Table"));
+        var t = GWorld.Instance.GetTable();
         if (!t) return false;
+        inventory.AddItem(t);
         target = t;
         return true;
     }

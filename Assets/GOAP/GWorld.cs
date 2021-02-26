@@ -13,21 +13,24 @@ public sealed class GWorld {
 
     static GWorld() {
         world = new WorldStates();
-    }
-
-    private GWorld() {
         world = new WorldStates();
         availableTables = new Queue<GameObject>();
         unattendedTables = new Queue<GameObject>();
         pendingOrders = new Queue<GameObject>();
         ordersReady = new Queue<GameObject>();
-
+        
         var tables = GameObject.FindGameObjectsWithTag("Table");
         foreach (GameObject t in tables)
             availableTables.Enqueue(t);
-        if (tables.Length > 0)
+        if (tables.Length > 0) {
             world.ModifyState("AvailableTables", tables.Length);
+
+        }
+
+        Time.timeScale = 3;
     }
+
+    private GWorld() { }
 
     public static GWorld Instance {
         get { return instance; }
@@ -39,6 +42,7 @@ public sealed class GWorld {
 
     public GameObject ReserveTable() {
         try {
+            
             GameObject t = availableTables.Dequeue();
             unattendedTables.Enqueue(t);
             world.ModifyState("AvailableTables", -1);

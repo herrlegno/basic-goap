@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8e7876c52b70d4fa4cdd5fc70f9d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisAgent: {fileID: 0}
+  thisAgent: {fileID: 8574073673535360074}
 --- !u!114 &1373308865256960629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,7 +2025,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetTag: 
   duration: 1
-  preConditions: []
+  preConditions:
+  - key: OrdersReady
+    value: 0
   afterEffects:
   - key: DeliverToCustomer
     value: 0
@@ -2049,7 +2051,7 @@ MonoBehaviour:
   targetTag: 
   duration: 2
   preConditions:
-  - key: GoToTable
+  - key: UnattendedTables
     value: 0
   afterEffects:
   - key: PlaceOrder
@@ -2082,14 +2084,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a88ceed936518468a00cbadda3c1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Waiting Customer
+  actionName: Waiting
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 1
+  duration: 0
   preConditions: []
   afterEffects:
-  - key: GoToTable
+  - key: Wait
     value: 0
   agent: {fileID: 5973087560484741722}
   running: 0

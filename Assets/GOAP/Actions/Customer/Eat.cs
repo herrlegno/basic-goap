@@ -6,15 +6,16 @@ public class Eat : GAction {
     public override bool PrePerform() {
         GameObject o = inventory.items.Find(item => item.CompareTag("Order"));
         if (!o) return false;
-        inventory.items.Remove(o);
+        target = o.gameObject;
+        beliefs.RemoveState("GotOrder");
         return true;
     }
 
     public override bool PostPerform() {
-        GWorld world = GWorld.Instance;
         GameObject t = inventory.items.Find(item => item.CompareTag("Order"));
         t.GetComponent<Table>().customer = null;
-        world.FreeTable(t);
+        t.tag = "Table";
+        GWorld.Instance.FreeTable(t);
         return true;
     }
 }

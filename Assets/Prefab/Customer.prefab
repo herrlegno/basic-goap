@@ -2513,12 +2513,11 @@ GameObject:
   - component: {fileID: 8571599194872494506}
   - component: {fileID: -3939053054601753494}
   - component: {fileID: -2891989569530987227}
-  - component: {fileID: 8147646564603574148}
   - component: {fileID: 181571816274776368}
   - component: {fileID: 1923250617516022957}
   - component: {fileID: 3124261780642660439}
   - component: {fileID: 2116873160366390360}
-  - component: {fileID: 2238930344724476556}
+  - component: {fileID: 4746104340676959045}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -2560,7 +2559,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &-2891989569530987227
@@ -2576,31 +2575,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisAgent: {fileID: 2116873160366390360}
---- !u!114 &8147646564603574148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8560050545005163582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa29119e38b38345b631d70650ad366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Waiting For Table
-  cost: 1
-  target: {fileID: 0}
-  targetTag: Entrance
-  duration: 0
-  preConditions:
-  - key: WaitForTable
-    value: 0
-  afterEffects:
-  - key: WaitOrder
-    value: 0
-  agent: {fileID: -3939053054601753494}
-  running: 0
 --- !u!114 &181571816274776368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,11 +2591,13 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 0
+  duration: 1
   preConditions:
-  - key: WaitOrder
+  - key: GoToTable
     value: 0
-  afterEffects: []
+  afterEffects:
+  - key: PlaceOrder
+    value: 0
   agent: {fileID: -3939053054601753494}
   running: 0
 --- !u!114 &1923250617516022957
@@ -2640,12 +2616,14 @@ MonoBehaviour:
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 0
-  preConditions: []
+  duration: 5
+  preConditions:
+  - key: GotOrder
+    value: 0
   afterEffects:
   - key: Eat
     value: 0
-  - key: Leave
+  - key: GoHome
     value: 0
   agent: {fileID: -3939053054601753494}
   running: 0
@@ -2667,9 +2645,11 @@ MonoBehaviour:
   targetTag: Home
   duration: 0
   preConditions:
+  - key: GoHome
+    value: 0
+  afterEffects:
   - key: Leave
     value: 0
-  afterEffects: []
   agent: {fileID: -3939053054601753494}
   running: 0
 --- !u!114 &2116873160366390360
@@ -2686,7 +2666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   currentAction: {fileID: 0}
---- !u!114 &2238930344724476556
+--- !u!114 &4746104340676959045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2698,16 +2678,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5ca8a77e5e12f4faca092fb35e44aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
+  actionName: GoToRestaurant
   cost: 1
   target: {fileID: 0}
   targetTag: Entrance
   duration: 0
-  preConditions: []
-  afterEffects:
-  - key: WaitForTable
+  preConditions:
+  - key: GoToRestaurant
     value: 0
-  agent: {fileID: -3939053054601753494}
+  afterEffects:
+  - key: GoToTable
+    value: 0
+  agent: {fileID: 0}
   running: 0
 --- !u!1 &8672336025572496550
 GameObject:
